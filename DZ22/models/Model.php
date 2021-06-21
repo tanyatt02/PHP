@@ -39,17 +39,19 @@ abstract class Model implements IModel
             if ( $count <> 0){
                 $obj = new $className;
                 if(! $obj->getOne($value)){
-                    $sql .= ", :{$key}";
                     $params[$key] = NULL;
-                }else{$sql .= ", :{$key}";$params[$key] = $value;}
+                }else{
+                    $params[$key] = $value;
+                }
             }else{
-                $sql .= ", :{$key}";$params[$key] = $value;
+                $params[$key] = $value;
             };
-            
+            $sql .= ", :{$key}";
         };
         $sql .= ")";
         echo "<br>SQL INSERT: ". $sql . "<br>";
         echo 'params = ' . implode(',',array_keys($params)).'<br>';
+        
         DB::getInstance()->execute($sql, $params);
         $this->id = DB::getInstance()->lastInsertId();
         
