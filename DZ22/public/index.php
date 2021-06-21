@@ -20,7 +20,7 @@ $product = $product->getOne(2);
 
 $product = $product->getOne(3);
 
-$product2 = new Product ('Платье', 'летнее', 555, 3);
+$product2 = new Product ('Платье', 'летнее', 555, 4);
 $product2->insert();
 echo '<br>';
 var_dump($product2->id);
