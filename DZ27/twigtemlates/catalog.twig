@@ -1,0 +1,12 @@
+<h2>Каталог</h2>
+
+{% for item in catalog %}
+<div>
+    <h3><a href="/indexTwig.php/?c=product&a=card&id={{ item.id }}">{{ item.name }}</a></h3>
+    <p>price: {{ item.price }}</p>
+    <button>Купить</button>
+</div>
+{% endfor %}
+
+<a href="/indexTwig.php/?c=product&a=catalog&page={{ page }}">Еще</a>
+
